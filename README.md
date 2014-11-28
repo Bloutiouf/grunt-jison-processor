@@ -71,7 +71,7 @@ The format is the same as for `options.grammar`.
 Type: `string`
 Default: `parser`
 
-The name of the parser variable. Useful only when `grammar.output` is defined and `grammar.type` is `js`.
+The name of the parser variable. Useful only when `options.output` is defined and `options.type` is `js`.
 
 #### options.output
 Type: `string`
@@ -88,7 +88,7 @@ The algorithm to use for the parser. Possible values are `lalr`, `ll`, `lr`, `lr
 Type: `string`
 Default: `commonjs`
 
-The type of module generated. Possible values are `amd`, `commonjs`, and `js`. Useful only when `grammar.output` is defined.
+The type of module generated. Possible values are `amd`, `commonjs`, and `js`. Useful only when `options.output` is defined.
 
 ### Files
 
