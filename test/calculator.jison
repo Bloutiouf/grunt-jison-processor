@@ -38,35 +38,33 @@
 
 expressions
     : e EOF
-        { return $1; }
+        {return $1}
     ;
 
 e
     : e '+' e
-        {$$ = $1+$3;}
+        {$$ = $1+$3}
     | e '-' e
-        {$$ = $1-$3;}
+        {$$ = $1-$3}
     | e '*' e
-        {$$ = $1*$3;}
+        {$$ = $1*$3}
     | e '/' e
-        {$$ = $1/$3;}
+        {$$ = $1/$3}
     | e '^' e
-        {$$ = Math.pow($1, $3);}
+        {$$ = Math.pow($1, $3)}
     | e '!'
-        {{
-          $$ = (function fact (n) { return n==0 ? 1 : fact(n-1) * n })($1);
-        }}
+        {$$ = (function(n) { return n==0 ? 1 : arguments.callee(n-1) * n; })($1)}
     | e '%'
-        {$$ = $1/100;}
+        {$$ = $1/100}
     | '-' e %prec UMINUS
-        {$$ = -$2;}
+        {$$ = -$2}
     | '(' e ')'
-        {$$ = $2;}
+        {$$ = $2}
     | NUMBER
-        {$$ = Number(yytext);}
+        {$$ = Number(yytext)}
     | E
-        {$$ = Math.E;}
+        {$$ = Math.E}
     | PI
-        {$$ = Math.PI;}
+        {$$ = Math.PI}
     ;
 

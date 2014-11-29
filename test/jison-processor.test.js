@@ -24,12 +24,9 @@ var path = require('path');
     test.ifError(value)
 */
 
-exports['jison-ext'] = {
-	setUp: function(done) {
-		done();
-	},
-	calculator: function(test) {
-		var dir = path.join('tmp', 'calculator');
+function testParser(name) {
+	return function(test) {
+		var dir = path.join('tmp', name);
 		var files = fs.readdirSync(dir);
 		
 		files.forEach(function(file) {
@@ -38,16 +35,13 @@ exports['jison-ext'] = {
 			
 			var actual = fs.readFileSync(path.join(dir, file)).toString();
 			
-			test.equal(actual, expected, 'should match.');
+			test.strictEqual(actual, expected, 'should match.');
 		});
 		
-		test.done();
-	},
-	'calculator-parser': function(test) {
-		var calculator = require('../tmp/calculator-parser.js');
+		var calculator = require('../tmp/' + name + '.js');
 		
-		var dir = path.join('test', 'calculator');
-		var files = fs.readdirSync(dir);
+		dir = path.join('test', 'calculator');
+		files = fs.readdirSync(dir);
 		
 		files.forEach(function(file) {
 			var ext = path.extname(file);
@@ -58,6 +52,22 @@ exports['jison-ext'] = {
 			
 			test.equal(actual, expected, 'should match.');
 		});
+		
+		test.done();
+	};
+}
+
+exports['jison-ext'] = {
+	'calculator-jison': testParser('calculator-jison'),
+	'calculator-js': testParser('calculator-js'),
+	'calculator-json': testParser('calculator-json'),
+	'equality': function(test) {
+		var calculatorJison = fs.readFileSync(path.join('tmp', 'calculator-jison.js')).toString(),
+			calculatorJs = fs.readFileSync(path.join('tmp', 'calculator-js.js')).toString(),
+			calculatorJson = fs.readFileSync(path.join('tmp', 'calculator-json.js')).toString();
+		
+		test.strictEqual(calculatorJison, calculatorJs, 'should match.');
+		test.strictEqual(calculatorJison, calculatorJson, 'should match.');
 		
 		test.done();
 	}

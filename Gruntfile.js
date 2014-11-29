@@ -29,19 +29,31 @@ module.exports = function(grunt) {
 		},
 
 		'jison-processor': {
-			options: {
-				grammar: 'test/calculator.json'
-				// grammar: 'test/calculator.jison'
-				// grammar: require('./test/calculator.js')
-			},
-			calculator: {
+			'calculator-jison': {
+				options: {
+					grammar: 'test/calculator.jison',
+					output: 'tmp/calculator-jison.js'
+				},
 				files: {
-					'tmp/calculator': 'test/calculator/*'
+					'tmp/calculator-jison': 'test/calculator/*'
 				}
 			},
-			'calculator-parser': {
+			'calculator-js': {
 				options: {
-					output: 'tmp/calculator-parser.js'
+					grammar: require('./test/calculator.js'),
+					output: 'tmp/calculator-js.js'
+				},
+				files: {
+					'tmp/calculator-js': 'test/calculator/*'
+				}
+			},
+			'calculator-json': {
+				options: {
+					grammar: 'test/calculator.json',
+					output: 'tmp/calculator-json.js'
+				},
+				files: {
+					'tmp/calculator-json': 'test/calculator/*'
 				}
 			}
 		},
