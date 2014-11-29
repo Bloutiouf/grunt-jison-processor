@@ -102,26 +102,22 @@ If there are no `sources`, the `destination` is skipped and nothing is generated
 
 ### Usage example
 
-This is the actual test targets for the module. The target `calculator` computes math formulas, whereas the target `calculator-parser` generates a parser for such formulas.
+In this example, the target `calculator` processes each file in the directory `test/calculator` and saves them in the directory `tmp/calculator`. It also saves the parser in the file `tmp/calculator-parser.js`. 
 
-The calculator grammar is an example from [Jison](https://github.com/zaach/jison). 
+The calculator grammar is adapted from an example from [Jison](https://github.com/zaach/jison). 
 
 ```js
 grunt.initConfig({
 	'jison-processor': {
-		options: {
-			grammar: 'test/calculator.json'
-			// grammar: 'test/calculator.jison'
-			// grammar: require('./test/calculator.js')
-		},
 		calculator: {
+			options: {
+				output: 'tmp/calculator-parser.js',
+				grammar: 'test/calculator.json'
+				// grammar: 'test/calculator.jison'
+				// grammar: require('./test/calculator.js')
+			},
 			files: {
 				'tmp/calculator': 'test/calculator/*'
-			}
-		},
-		'calculator-parser': {
-			options: {
-				output: 'tmp/calculator-parser.js'
 			}
 		}
 	}
