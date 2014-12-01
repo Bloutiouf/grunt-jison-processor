@@ -15,7 +15,7 @@ var path = require('path');
 
 module.exports = function(grunt) {
 	
-	grunt.registerMultiTask('jison-processor', 'Parse files based on grammars, optionally generate standalone parsers.', function() {
+	grunt.registerMultiTask('jison-processor', 'Parse files based on grammars, generate standalone parsers, or both.', function() {
 		var options = this.options({
 			name: 'parser',
 			parser: 'lalr',

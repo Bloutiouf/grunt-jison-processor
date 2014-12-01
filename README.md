@@ -1,6 +1,6 @@
 # grunt-jison-processor
 
-Parse files based on grammars, optionally generate standalone parsers.  
+Parse files based on grammars, generate standalone parsers, or both.  
 
 ## Getting Started
 

@@ -1,6 +1,6 @@
 {
   "name": "grunt-jison-processor",
-  "description": "Parse files based on grammars, optionally generate standalone parsers.",
+  "description": "Parse files based on grammars, generate standalone parsers, or both.",
   "version": "0.1.0",
   "homepage": "https://github.com/Bloutiouf/grunt-jison-processor",
   "author": {
