@@ -130,7 +130,12 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 ## Release History
 
-### 1.0.0
+### 0.1.1
+
+* add more tests
+* polish documentation
+
+### 0.1.0
 
 * grunt-jison-processor is born \o/
 * processes files based on grammar
